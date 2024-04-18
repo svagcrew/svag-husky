@@ -1,4 +1,4 @@
 #!/bin/sh
 
-set -e
-sh "$(npm root)/../hooks/pre-commit" "$@"
+pnpm lint --fix
+pnpm types

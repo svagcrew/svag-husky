@@ -1,16 +1,7 @@
 import dedent from 'dedent'
 import { promises as fs } from 'fs'
 import path from 'path'
-import {
-  defineCliApp,
-  getPackageJson,
-  isFileExists,
-  log,
-  setPackageJsonDataItem,
-  spawn,
-  validateOrThrow,
-} from 'svag-cli-utils'
-import z from 'zod'
+import { defineCliApp, getPackageJson, isFileExists, log, setPackageJsonDataItem, spawn } from 'svag-cli-utils'
 
 defineCliApp(async ({ cwd, command, flags, argr }) => {
   const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
@@ -22,7 +13,9 @@ defineCliApp(async ({ cwd, command, flags, argr }) => {
         name: 'pre-commit',
         content: dedent`#!/bin/sh
 
-          sh "$(npm root)/svag-husky/hooks/pre-commit" "$@"
+          pnpm test
+          pnpm lint --fix
+          pnpm types
         `,
       },
       {
@@ -50,7 +43,7 @@ defineCliApp(async ({ cwd, command, flags, argr }) => {
     log.green('Installing dependencies...')
     await spawn({
       cwd: packageJsonDir,
-      command: 'pnpm i -D husky',
+      command: 'pnpm i -D svag-husky@latest husky',
     })
     log.toMemory.black(`${packageJsonPath}: dependencies installed`)
   }
