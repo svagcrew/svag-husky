@@ -3,7 +3,8 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { defineCliApp, getPackageJson, isFileExists, log, setPackageJsonDataItem, spawn } from 'svag-cli-utils'
 
-defineCliApp(async ({ cwd, command }) => {
+defineCliApp(async ({ cwd, command, args }) => {
+  cwd = path.resolve(cwd, args[0] || '.')
   const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
 
   const createHooksFiles = async () => {
@@ -50,6 +51,10 @@ defineCliApp(async ({ cwd, command }) => {
 
   const initializeHusky = async () => {
     log.green('Initializing husky...')
+    await spawn({
+      cwd: packageJsonDir,
+      command: 'git init',
+    })
     await spawn({
       cwd: packageJsonDir,
       command: 'pnpm husky',
