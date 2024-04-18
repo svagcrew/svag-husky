@@ -34,6 +34,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.12.7
     version: 20.12.7
+  eslint:
+    specifier: ^9.0.0
+    version: 9.0.0
   husky:
     specifier: ^9.0.11
     version: 9.0.11

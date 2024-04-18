@@ -3,7 +3,7 @@ import { promises as fs } from 'fs'
 import path from 'path'
 import { defineCliApp, getPackageJson, isFileExists, log, setPackageJsonDataItem, spawn } from 'svag-cli-utils'
 
-defineCliApp(async ({ cwd, command, flags, argr }) => {
+defineCliApp(async ({ cwd, command }) => {
   const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
 
   const createHooksFiles = async () => {
