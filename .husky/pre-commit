@@ -1,4 +1,2 @@
-#!/bin/sh
-
 pnpm lint --fix
 pnpm types
