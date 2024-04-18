@@ -1,0 +1,55 @@
+{
+  "name": "svag-husky",
+  "version": "0.1.1",
+  "homepage": "https://github.com/svagcrew/svag-husky",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svagcrew/svag-husky.git"
+  },
+  "bugs": {
+    "url": "https://github.com/svagcrew/svag-husky/issues"
+  },
+  "author": {
+    "name": "Sergei Dmitriev",
+    "url": "https://sergei.svag.group"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "./bin/**/*",
+    "./hooks/**/*",
+    "./dist/**/*"
+  ],
+  "bin": {
+    "svag-husky": "./bin/index.js"
+  },
+  "scripts": {
+    "lint": "svag-lint lint",
+    "prettify": "svag-prettier prettify",
+    "types": "svag-ts types",
+    "build": "svag-ts build",
+    "watch": "svag-ts watch",
+    "prepare": "ts-patch install -s && husky"
+  },
+  "dependencies": {
+    "dedent": "^1.5.3",
+    "lodash": "^4.17.21",
+    "prettier": "^3.2.5",
+    "svag-cli-utils": "^0.1.18",
+    "typescript": "^5.4.5",
+    "typescript-transform-paths": "^3.4.7",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.7",
+    "husky": "^9.0.11",
+    "rimraf": "^5.0.5",
+    "svag-lint": "^0.1.22",
+    "svag-prettier": "^0.1.14",
+    "svag-ts": "^0.1.19",
+    "ts-patch": "^3.1.2"
+  }
+}

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sh "$(npm root)/../hooks/commit-msg" "$@"
