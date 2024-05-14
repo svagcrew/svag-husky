@@ -39,7 +39,7 @@
     "dedent": "^1.5.3",
     "lodash": "^4.17.21",
     "prettier": "^3.2.5",
-    "svag-cli-utils": "^0.1.39",
+    "svag-cli-utils": "^0.1.40",
     "typescript": "^5.4.5",
     "zod": "^3.22.4"
   },
@@ -51,10 +51,10 @@
     "husky": "^9.0.11",
     "onchange": "^7.1.0",
     "rimraf": "^5.0.5",
-    "svag-husky": "^0.1.21",
-    "svag-lint": "^0.1.44",
-    "svag-prettier": "^0.1.35",
-    "svag-ts": "^0.1.41",
+    "svag-husky": "^0.1.22",
+    "svag-lint": "^0.1.46",
+    "svag-prettier": "^0.1.36",
+    "svag-ts": "^0.1.42",
     "tsc-alias": "^1.8.10"
   }
 }
