@@ -4,10 +4,9 @@ import path from 'path'
 import { defineCliApp, getPackageJson, isFileExists, log, setPackageJsonDataItem, spawn } from 'svag-cli-utils'
 
 defineCliApp(async ({ cwd, command, args }) => {
-  cwd = path.resolve(cwd, args[0] || '.')
-  const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
-
   const createHooksFiles = async () => {
+    cwd = path.resolve(cwd, args[0] || '.')
+    const { packageJsonDir } = await getPackageJson({ cwd })
     log.green('Creating husky hook files...')
     const source = [
       {
@@ -41,6 +40,8 @@ defineCliApp(async ({ cwd, command, args }) => {
   }
 
   const installDeps = async () => {
+    cwd = path.resolve(cwd, args[0] || '.')
+    const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
     log.green('Installing dependencies...')
     await spawn({
       cwd: packageJsonDir,
@@ -50,6 +51,8 @@ defineCliApp(async ({ cwd, command, args }) => {
   }
 
   const initializeHusky = async () => {
+    cwd = path.resolve(cwd, args[0] || '.')
+    const { packageJsonDir, packageJsonPath } = await getPackageJson({ cwd })
     log.green('Initializing husky...')
     await spawn({
       cwd: packageJsonDir,
@@ -63,8 +66,9 @@ defineCliApp(async ({ cwd, command, args }) => {
   }
 
   const addPrepareScriptToPackageJson = async () => {
+    cwd = path.resolve(cwd, args[0] || '.')
+    const { packageJsonDir, packageJsonPath, packageJsonData } = await getPackageJson({ cwd })
     log.green('Adding "prepare" script to package.json...')
-    const { packageJsonData, packageJsonPath } = await getPackageJson({ cwd: packageJsonDir })
     if (!packageJsonData.scripts) {
       packageJsonData.scripts = {}
     }
@@ -119,6 +123,7 @@ defineCliApp(async ({ cwd, command, args }) => {
       break
     }
     case 'ping': {
+      const { packageJsonDir } = await getPackageJson({ cwd })
       await spawn({ cwd: packageJsonDir, command: 'echo pong' })
       break
     }
