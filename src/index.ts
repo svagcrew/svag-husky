@@ -72,19 +72,19 @@ defineCliApp(async ({ cwd, command, args }) => {
     if (!packageJsonData.scripts) {
       packageJsonData.scripts = {}
     }
-    const command = 'husky'
+    const cmd = 'husky'
     if (!packageJsonData.scripts.prepare) {
-      await setPackageJsonDataItem({ cwd: packageJsonDir, key: 'scripts.prepare', value: command })
+      await setPackageJsonDataItem({ cwd: packageJsonDir, key: 'scripts.prepare', value: cmd })
       log.toMemory.black(`${packageJsonPath}: script "prepare" added`)
-    } else if (packageJsonData.scripts.prepare.includes(command)) {
-      log.toMemory.black(`${packageJsonPath}: script "prepare" already includes "${command}"`)
+    } else if (packageJsonData.scripts.prepare.includes(cmd)) {
+      log.toMemory.black(`${packageJsonPath}: script "prepare" already includes "${cmd}"`)
     } else {
       await setPackageJsonDataItem({
         cwd: packageJsonDir,
         key: 'scripts.prepare',
-        value: `${packageJsonData.scripts.prepare} && ${command}`,
+        value: `${packageJsonData.scripts.prepare} && ${cmd}`,
       })
-      log.toMemory.black(`${packageJsonPath}: script "prepare" extended with "${command}"`)
+      log.toMemory.black(`${packageJsonPath}: script "prepare" extended with "${cmd}"`)
     }
   }
 
