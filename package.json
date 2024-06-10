@@ -1,6 +1,6 @@
 {
   "name": "svag-husky",
-  "version": "0.1.49",
+  "version": "0.1.50",
   "homepage": "https://github.com/svagcrew/svag-husky",
   "repository": {
     "type": "git",
@@ -17,24 +17,23 @@
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
+  "bin": {
+    "svag-husky": "./bin/index.js"
+  },
   "files": [
     "./src/**/*",
     "./dist/**/*",
     "./bin/**/*",
     "./hooks/**/*"
   ],
-  "bin": {
-    "svag-husky": "./bin/index.js"
-  },
   "scripts": {
-    "lint": "svag-lint lint",
-    "prettify": "svag-prettier prettify",
-    "types": "svag-ts types",
     "build": "svag-ts build",
-    "watch": "svag-ts watch",
+    "lint": "svag-lint lint",
+    "prepare": "husky",
+    "prettify": "svag-prettier prettify",
     "test": "echo 'Everything is OK'",
-    "prepare": "husky"
+    "types": "svag-ts types",
+    "watch": "svag-ts watch"
   },
   "dependencies": {
     "dedent": "^1.5.3",
@@ -57,5 +56,6 @@
     "svag-prettier": "^0.1.63",
     "svag-ts": "^0.1.68",
     "tsc-alias": "^1.8.10"
-  }
+  },
+  "type": "module"
 }
